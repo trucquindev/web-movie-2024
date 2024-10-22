@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import DetailFilmLeft from '@/components/DetailFilmLeft';
-import RightBar from '@/components/RightBar';
+import RightBar from '@/components/SideBar';
 import Footer from '@/components/Footer';
 import { IDetailFilm } from '@/interface/ListFilm';
 import { apiDetailFilm } from '@/apis/apiDetailFilm';

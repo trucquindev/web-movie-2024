@@ -14,11 +14,17 @@ const MovieVideoDetail: React.FC<Props> = ({ movie }) => {
       <h1 className="text-white font-semibold text-2xl py-2">{movie?.title}</h1>
       {/* video film  */}
       <div className="w-[100%]">
-        {/* <video
+        {/* https://drive.google.com/file/d/1-48goMr8BMir0ZaE9Y996xq2R68018Vt/view?usp=sharing
+        <video
           controls
           className="w-full h-[400px] object-cover p-2"
-          src={nhabanu}
-        /> */}
+          src="https://drive.google.com/uc?export=download&id=1-48goMr8BMir0ZaE9Y996xq2R68018Vt"
+        ></video> */}
+        <iframe
+          src="https://drive.google.com/file/d/1-48goMr8BMir0ZaE9Y996xq2R68018Vt/preview"
+          className="w-full h-[400px] object-cover p-2"
+          allow="autoplay"
+        />
         <div className="flex flex-col justify-center items-center py-2 border-b border-gray-400">
           <h3 className="text-white font-semibold text-lg mb-2">
             Đổi server nếu lag
