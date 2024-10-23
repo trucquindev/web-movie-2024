@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import posterMain from '../assets/posterMain.png';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { ITopRate } from '@/interface/ListFilm';
 import { apiTopRate } from '@/apis/apiTopRate';
+import { useNavigate } from 'react-router-dom';
+import { path } from '../untils/constrains/path';
 const RecomendFilm: React.FC = () => {
+  const navigate = useNavigate();
   const [moviesTopRate, setMoviesTopRate] = useState<ITopRate[]>([]);
   apiTopRate({ setMoviesTopRate });
-  console.log('🚀 ~ moviesTopRate:', moviesTopRate);
   return (
     <div className="text-white w-full mt-8 p-2">
       <h2 className="text-orange-400 font-bold uppercase text-xl">
@@ -19,7 +20,13 @@ const RecomendFilm: React.FC = () => {
             moviesTopRate?.slice(0, 16)?.map((movie) => {
               return (
                 <div
-                  // onClick={() => navigate(`/movie/${movie.id}`)}
+                  onClick={() => {
+                    navigate(`/${path.OVERVIEW}${movie.id}`);
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   className="w-full h-56 transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer rounded-2xl relative group"
                 >
                   <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 hover:opacity-0 rounded-2xl" />
