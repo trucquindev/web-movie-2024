@@ -4,6 +4,7 @@ import SearchFilm from './containers/Public/SearchFilm';
 import { path } from './untils/constrains/path';
 import DetailFilm from './containers/Public/DetailFilm';
 import Overview from './containers/Public/Overview';
+import NotFound from './containers/Public/NotFound';
 import { useState } from 'react';
 function App() {
   const [id, setId] = useState<number>();
@@ -14,6 +15,7 @@ function App() {
         <Route path={path.SEARCH} element={<SearchFilm />} />
         <Route path={path.MOVIE} element={<DetailFilm id={id} />} />
         <Route path={path.OVERVIEW_ID} element={<Overview />} />
+        <Route path={path.NOT_FOUND} element={<NotFound />} />
       </Routes>
     </div>
   );
