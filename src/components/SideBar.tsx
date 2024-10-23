@@ -130,7 +130,7 @@ const RightBar: React.FC = () => {
         </h1>
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
           {moviesTopRate &&
-            moviesTopRate?.slice(0, 4)?.map((movie) => {
+            moviesTopRate?.slice(0, 6)?.map((movie) => {
               return (
                 <div className="w-full p-2 flex gap-2 cursor-pointer hover:text-orange-400">
                   <img

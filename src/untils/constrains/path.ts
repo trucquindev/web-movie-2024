@@ -1,5 +1,6 @@
 export const path: any = {
   HOME: '/',
+  NOT_FOUND: '*',
   SEARCH: 'search/',
   MOVIE: '/movie/:idFilm',
   OVERVIEW: 'overview/movie/',
