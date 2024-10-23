@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { apiSearch } from '@/apis/apiSearch';
 import { ListFilm } from '@/interface/ListFilm';
-
+import { path } from '../untils/constrains/path';
 const MovieSearch: React.FC = () => {
   const [movies, setMovies] = useState<ListFilm[]>([]);
   const [searchParams] = useSearchParams();
@@ -21,7 +21,7 @@ const MovieSearch: React.FC = () => {
           return (
             <div
               key={index}
-              onClick={() => navigate(`/movie/${movie.id}`)}
+              onClick={() => navigate(`/${path.OVERVIEW}${movie.id}`)}
               className="w-full h-72 relative transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer rounded-2xl"
             >
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 hover:opacity-0 rounded-2xl" />

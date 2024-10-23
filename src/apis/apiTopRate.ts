@@ -18,10 +18,10 @@ export const apiTopRate = async ({ setMoviesTopRate }: Props) => {
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {
-        const { original_title, poster_path, release_date } = p;
+        const { original_title, poster_path, release_date, id } = p;
         setMoviesTopRate((prevMovies) => [
           ...prevMovies,
-          { original_title, poster_path, release_date },
+          { original_title, poster_path, release_date, id },
         ]);
       });
     };

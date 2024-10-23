@@ -19,7 +19,6 @@ const RightBar: React.FC = () => {
   apiTrending({ setMoviesTrending });
   apiComingSoon({ setMoviesComing });
   apiTopRate({ setMoviesTopRate });
-  console.log('🚀 ~ moviesTopRate:', moviesTopRate);
 
   return (
     <div className="text-white w-full">

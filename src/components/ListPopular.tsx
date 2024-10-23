@@ -2,17 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ListFilm } from '@/interface/ListFilm';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Modal from 'react-modal';
-import YouTube from 'react-youtube';
 import { useNavigate } from 'react-router-dom';
-const opts = {
-  height: '390',
-  width: '640',
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-};
+import { path } from '../untils/constrains/path';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -38,11 +29,6 @@ interface Props {
 const PopularFilm: React.FC<Props> = ({ setId }) => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<ListFilm[]>([]);
-  const [modalIsOpen, setModelIsOpen] = useState<boolean>(false);
-  const [keyTrailer, setKeyTrailer] = useState<string>('');
-  const handleCloseModel = () => {
-    return setModelIsOpen(!modalIsOpen);
-  };
   useEffect(() => {
     const fetchAPI = async () => {
       const options = {
@@ -79,7 +65,7 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
               key={index}
               onClick={() => {
                 // handleTrailer({ id: movie.id, setModelIsOpen, setKeyTrailer });
-                navigate(`/movie/${movie.id}`);
+                navigate(`${path.OVERVIEW}${movie.id}`);
                 setId && setId(movie.id);
               }}
               className="w-[200px] h-72 relative transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
@@ -99,26 +85,6 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
           );
         })}
       </Carousel>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={handleCloseModel}
-        style={{
-          overlay: {
-            position: 'fixed',
-            zIndex: 99,
-          },
-          content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
-        contentLabel="Example Modal"
-      >
-        <YouTube videoId={keyTrailer} opts={opts} />;
-      </Modal>
     </div>
   );
 };
