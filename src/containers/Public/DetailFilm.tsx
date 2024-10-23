@@ -18,7 +18,7 @@ const DetailFilm: React.FC<Props> = ({ id }) => {
   return (
     <div className="flex w-full bg-black flex-col justify-center items-center">
       <Header />
-      <div className="w-[90%]  flex items-center justify-center">
+      <div className="w-[90%]  flex justify-center">
         <div className="w-[70%]">
           <DetailFilmLeft movie={movie} />
         </div>
