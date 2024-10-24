@@ -5,6 +5,8 @@ import { ITopRate } from '@/interface/ListFilm';
 import { apiTrending } from '@/apis/apiTrending';
 import { apiComingSoon } from '@/apis/apiComingSoon';
 import { apiTopRate } from '@/apis/apiTopRate';
+import { useNavigate } from 'react-router-dom';
+import { path } from '../untils/constrains/path';
 const isActive =
   'w-1/3 font-bold h-9 border flex items-center justify-center bg-gray-500';
 const notActive =
@@ -16,6 +18,7 @@ const RightBar: React.FC = () => {
   const [moviesTrending, setMoviesTrending] = useState<ITrending[]>([]);
   const [moviesComing, setMoviesComing] = useState<IComming[]>([]);
   const [moviesTopRate, setMoviesTopRate] = useState<ITopRate[]>([]);
+  const navigate = useNavigate();
   apiTrending({ setMoviesTrending });
   apiComingSoon({ setMoviesComing });
   apiTopRate({ setMoviesTopRate });
@@ -116,7 +119,7 @@ const RightBar: React.FC = () => {
                     className="w-20 h-24 object-cover"
                   />
                   <div className="w-full text-sm mt-2 flex flex-col justify-center gap-5 py-2">
-                    <h6 className="text-sm">{movie.original_title}</h6>
+                    <h6 className="text-sm">{movie.title}</h6>
                     <p className="text-xs">Sắp chiếu vietsub</p>
                   </div>
                 </div>
@@ -136,6 +139,13 @@ const RightBar: React.FC = () => {
               return (
                 <div
                   key={index}
+                  onClick={() => {
+                    navigate(`/${path.OVERVIEW}${movie.id}`);
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   className="w-full p-2 flex gap-2 cursor-pointer hover:text-orange-400"
                 >
                   <img
@@ -146,7 +156,7 @@ const RightBar: React.FC = () => {
                     className="w-20 h-24 object-cover"
                   />
                   <div className="w-full text-sm mt-2 flex flex-col justify-center gap-5 py-2">
-                    <h6 className="text-sm">{movie?.original_title}</h6>
+                    <h6 className="text-sm">{movie?.title}</h6>
                     <p className="text-xs">{movie?.release_date}</p>
                   </div>
                 </div>

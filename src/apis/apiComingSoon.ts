@@ -18,10 +18,10 @@ export const apiComingSoon = async ({ setMoviesComing }: Props) => {
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {
-        const { original_title, poster_path } = p;
+        const { title, poster_path } = p;
         setMoviesComing((prevMovies) => [
           ...prevMovies,
-          { original_title, poster_path },
+          { title, poster_path },
         ]);
       });
     };

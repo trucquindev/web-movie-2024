@@ -6,13 +6,10 @@ import OverviewDetail from '@/components/OverviewDetail';
 import { useParams } from 'react-router-dom';
 import { apiOverview } from '@/apis/apiOverview';
 import { IOverview } from '@/interface/ListFilm';
-interface Props {
-  id: number | undefined;
-}
-const Overview: React.FC<Props> = ({ id }) => {
+const Overview: React.FC = () => {
   const { idFilm } = useParams();
   const idFilmNumber = idFilm ? parseInt(idFilm, 10) : undefined;
-  const idF: number | undefined = id || idFilmNumber;
+  const idF: number | undefined = idFilmNumber;
   const [movieOverview, setMovieOverview] = React.useState<IOverview>(
     {} as IOverview
   );
