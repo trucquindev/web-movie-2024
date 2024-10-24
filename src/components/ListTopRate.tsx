@@ -2,17 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ListFilm } from '@/interface/ListFilm';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Modal from 'react-modal';
-import YouTube from 'react-youtube';
-import { handleTrailer } from '@/fuctions/HandleTrailer';
-const opts = {
-  height: '390',
-  width: '640',
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-};
+import { useNavigate } from 'react-router-dom';
+import { path } from '../untils/constrains/path';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -32,13 +23,12 @@ const responsive = {
     items: 2,
   },
 };
-const ListTopRate: React.FC = () => {
+interface Props {
+  setId?: React.Dispatch<React.SetStateAction<number | undefined>>;
+}
+const ListTopRate: React.FC<Props> = ({ setId }) => {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState<ListFilm[]>([]);
-  const [modalIsOpen, setModelIsOpen] = useState<boolean>(false);
-  const [keyTrailer, setKeyTrailer] = useState<string>('');
-  const handleCloseModel = () => {
-    return setModelIsOpen(!modalIsOpen);
-  };
   useEffect(() => {
     const fetchAPI = async () => {
       const options = {
@@ -49,7 +39,7 @@ const ListTopRate: React.FC = () => {
         },
       };
       const url =
-        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+        'https://api.themoviedb.org/3/movie/top_rated?language=vi-VN&page=1';
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {
@@ -72,9 +62,15 @@ const ListTopRate: React.FC = () => {
           return (
             <div
               key={index}
-              onClick={() =>
-                handleTrailer({ id: movie.id, setModelIsOpen, setKeyTrailer })
-              }
+              onClick={() => {
+                // handleTrailer({ id: movie.id, setModelIsOpen, setKeyTrailer });
+                navigate(`${path.OVERVIEW}${movie.id}`);
+                setId && setId(movie.id);
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
               className="w-[200px] h-72 relative transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
             >
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 hover:opacity-0" />
@@ -92,26 +88,6 @@ const ListTopRate: React.FC = () => {
           );
         })}
       </Carousel>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={handleCloseModel}
-        style={{
-          overlay: {
-            position: 'fixed',
-            zIndex: 99,
-          },
-          content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
-        contentLabel="Example Modal"
-      >
-        <YouTube videoId={keyTrailer} opts={opts} />;
-      </Modal>
     </div>
   );
 };

@@ -102,9 +102,12 @@ const RightBar: React.FC = () => {
         </h1>
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
           {moviesComing &&
-            moviesComing?.slice(0, 5)?.map((movie) => {
+            moviesComing?.slice(0, 5)?.map((movie, index) => {
               return (
-                <div className="w-full p-2 flex gap-3 cursor-pointer hover:text-orange-400">
+                <div
+                  key={index}
+                  className="w-full p-2 flex gap-3 cursor-pointer hover:text-orange-400"
+                >
                   <img
                     src={`${'https://image.tmdb.org/t/p/w500'}${
                       movie.poster_path
@@ -129,9 +132,12 @@ const RightBar: React.FC = () => {
         </h1>
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
           {moviesTopRate &&
-            moviesTopRate?.slice(0, 6)?.map((movie) => {
+            moviesTopRate?.slice(0, 6)?.map((movie, index) => {
               return (
-                <div className="w-full p-2 flex gap-2 cursor-pointer hover:text-orange-400">
+                <div
+                  key={index}
+                  className="w-full p-2 flex gap-2 cursor-pointer hover:text-orange-400"
+                >
                   <img
                     src={`${'https://image.tmdb.org/t/p/w500'}${
                       movie.poster_path
