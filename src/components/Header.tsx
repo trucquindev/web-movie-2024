@@ -18,7 +18,12 @@ const Header: React.FC = () => {
           Movie
         </h1>
         <div className="flex gap-2 text-white">
-          <span className=" hover:text-red-500 cursor-pointer">Home</span>
+          <span
+            className=" hover:text-red-500 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
+            Home
+          </span>
           <span className=" hover:text-red-500 cursor-pointer">About</span>
           <span className=" hover:text-red-500 cursor-pointer">Contact</span>
         </div>

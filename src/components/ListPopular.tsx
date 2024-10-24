@@ -39,7 +39,7 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
         },
       };
       const url =
-        'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+        'https://api.themoviedb.org/3/movie/popular?language=vi-VN&page=1';
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {
@@ -67,6 +67,10 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
                 // handleTrailer({ id: movie.id, setModelIsOpen, setKeyTrailer });
                 navigate(`${path.OVERVIEW}${movie.id}`);
                 setId && setId(movie.id);
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
               }}
               className="w-[200px] h-72 relative transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
             >

@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { Button } from './ui/button';
 import RecomendFilm from './RecomendFilm';
 import { IOverview } from '@/interface/ListFilm';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+import YouTube from 'react-youtube';
+import { handleTrailer } from '@/fuctions/HandleTrailer';
+const opts = {
+  height: '390',
+  width: '640',
+  playerVars: {
+    // https://developers.google.com/youtube/player_parameters
+    autoplay: 1,
+  },
+};
 interface Props {
   movie: IOverview;
 }
 const OverviewDetail: React.FC<Props> = ({ movie }) => {
   const navigate = useNavigate();
+  const [modalIsOpen, setModelIsOpen] = useState<boolean>(false);
+  const [keyTrailer, setKeyTrailer] = useState<string>('');
+  const handleCloseModel = () => {
+    return setModelIsOpen(!modalIsOpen);
+  };
   return (
     <div className="w-full rounded-xl mt-6 flex items-center flex-col">
       <div className="w-[70%] flex justify-between rounded-lg bg-gray-900 p-2">
@@ -57,11 +73,16 @@ const OverviewDetail: React.FC<Props> = ({ movie }) => {
                 : undefined
             }`}</p>
             <p>{`Đạo diễn: ${movie.production_companies}`}</p>
-            {/* <p>
-              Diễn viên: Odette Annable, Cam Gigandet, Gary Oldman, Idris Elba,
-              James Remar, Ethan Cutkosky, Meagan Good, Jane Alexander, Carla
-              Gugino, Atticus Shaffer
-            </p> */}
+          </div>
+          <div className=" w-full mt-2 flex items-center justify-center bg-green-600 hover:bg-green-900 rounded-xl">
+            <Button
+              onClick={() =>
+                handleTrailer({ id: movie.id, setModelIsOpen, setKeyTrailer })
+              }
+              className="font-bold text-sm"
+            >
+              Xem trailer
+            </Button>
           </div>
         </div>
       </div>
@@ -84,6 +105,26 @@ const OverviewDetail: React.FC<Props> = ({ movie }) => {
       <div className="w-[70%]">
         <RecomendFilm />
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={handleCloseModel}
+        style={{
+          overlay: {
+            position: 'fixed',
+            zIndex: 99,
+          },
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            transform: 'translate(-50%, -50%)',
+          },
+        }}
+        contentLabel="Example Modal"
+      >
+        <YouTube videoId={keyTrailer} opts={opts} />;
+      </Modal>
     </div>
   );
 };

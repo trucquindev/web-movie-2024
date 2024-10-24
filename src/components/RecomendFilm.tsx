@@ -20,6 +20,7 @@ const RecomendFilm: React.FC = () => {
             moviesTopRate?.slice(0, 16)?.map((movie) => {
               return (
                 <div
+                  key={movie.id}
                   onClick={() => {
                     navigate(`/${path.OVERVIEW}${movie.id}`);
                     window.scrollTo({
