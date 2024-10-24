@@ -15,7 +15,7 @@ export const apiSearch = async ({ title, setMovies }: Props) => {
           Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
         },
       };
-      const url = `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1`;
+      const url = `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=vi-VN&page=1`;
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {

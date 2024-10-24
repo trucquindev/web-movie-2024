@@ -9,10 +9,10 @@ import { useParams } from 'react-router-dom';
 interface Props {
   id: number | undefined;
 }
-const DetailFilm: React.FC<Props> = ({ id }) => {
+const DetailFilm: React.FC = () => {
   const { idFilm } = useParams();
   const idFilmNumber = idFilm ? parseInt(idFilm, 10) : undefined;
-  const idF: number | undefined = id || idFilmNumber;
+  const idF: number | undefined = idFilmNumber;
   const [movie, setMovie] = React.useState<IDetailFilm>({} as IDetailFilm);
   apiDetailFilm({ idF, setMovie });
   return (

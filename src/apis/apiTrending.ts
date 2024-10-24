@@ -14,7 +14,7 @@ export const apiTrending = async ({ setMoviesTrending }: Props) => {
         },
       };
       const url =
-        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+        'https://api.themoviedb.org/3/movie/top_rated?language=vi-VN&page=1';
       const response = await fetch(url, options);
       const data = await response.json();
       data.results.forEach((p: any) => {

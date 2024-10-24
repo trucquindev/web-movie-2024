@@ -19,13 +19,23 @@ const Header: React.FC = () => {
         </h1>
         <div className="flex gap-2 text-white">
           <span
-            className=" hover:text-red-500 cursor-pointer"
+            className=" hover:text-red-500 cursor-pointer uppercase "
             onClick={() => navigate('/')}
           >
             Home
           </span>
-          <span className=" hover:text-red-500 cursor-pointer">About</span>
-          <span className=" hover:text-red-500 cursor-pointer">Contact</span>
+          <span
+            className=" hover:text-red-500 cursor-pointer uppercase"
+            onClick={() => navigate('/dmca')}
+          >
+            Dmca
+          </span>
+          <span
+            className=" hover:text-red-500 cursor-pointer uppercase"
+            onClick={() => alert('Đang cập nhật!')}
+          >
+            Contact
+          </span>
         </div>
       </div>
       <div className="flex w-full justify-end max-w-sm items-center space-x-2">

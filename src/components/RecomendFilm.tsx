@@ -39,7 +39,7 @@ const RecomendFilm: React.FC = () => {
                     className="w-full h-full object-cover rounded-2xl"
                   />
                   <div className="w-full flex justify-center absolute bottom-2 ">
-                    <p className="uppercase text-md">{movie.original_title}</p>
+                    <p className="uppercase text-md">{movie.title}</p>
                   </div>
                   <div
                     className="w-full h-full absolute top-0 left-0

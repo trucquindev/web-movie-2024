@@ -16,7 +16,7 @@ export interface ITrending {
 
 export interface IComming {
   poster_path: string;
-  original_title: string;
+  title: string;
 }
 export interface ITopRate extends IComming {
   id?: number;
