@@ -6,9 +6,6 @@ import Footer from '@/components/Footer';
 import { IDetailFilm } from '@/interface/ListFilm';
 import { apiDetailFilm } from '@/apis/apiDetailFilm';
 import { useParams } from 'react-router-dom';
-interface Props {
-  id: number | undefined;
-}
 const DetailFilm: React.FC = () => {
   const { idFilm } = useParams();
   const idFilmNumber = idFilm ? parseInt(idFilm, 10) : undefined;
