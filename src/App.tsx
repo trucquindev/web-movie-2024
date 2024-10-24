@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="w-screen">
       <Routes>
-        <Route path={path.HOME} element={<Home setId={setId} />} />
+        <Route path={path.HOME} element={<Home />} />
         <Route path={path.SEARCH} element={<SearchFilm />} />
         <Route path={path.MOVIE} element={<DetailFilm id={id} />} />
         <Route path={path.OVERVIEW_ID} element={<Overview id={id} />} />
