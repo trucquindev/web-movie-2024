@@ -40,7 +40,8 @@ export default function NewCommentsSection() {
           newComment = {
             id: commentIdCounter.current++,
             name: `User ${commentIdCounter.current}`,
-            avatar: '/diverse-user-avatars.png',
+            avatar:
+              'https://cafefcdn.com/203337114487263232/2025/5/21/471584752817336320-2024-6-3-doraemon-3-17173722166781704981911-30-9-657-1207-crop-1717372336444425413969-1747731331314975257991-1747812483041-17478124844651650953235.jpeg',
             text: `Phim hay quá`,
             replies: 'Phim mới',
             views: Math.floor(Math.random() * 10),
