@@ -102,38 +102,7 @@ export const movies: Movie[] = [
     actor: 'Hoàng Yến Chibi, Mạnh Quân',
   },
 ];
-export const categoriesData = [
-  {
-    name: 'Marvel',
-    color: 'bg-gradient-to-br from-blue-600 to-blue-800',
-    icon: '🦸',
-  },
-  {
-    name: '4K',
-    color: 'bg-gradient-to-br from-violet-600 to-violet-800',
-    icon: '📺',
-  },
-  {
-    name: 'Sitcom',
-    color: 'bg-gradient-to-br from-emerald-600 to-emerald-800',
-    icon: '😄',
-  },
-  {
-    name: 'Lồng Tiếng Cực Mạnh',
-    color: 'bg-gradient-to-br from-purple-600 to-pink-800',
-    icon: '🎤',
-  },
-  {
-    name: 'Xuyên Không',
-    color: 'bg-gradient-to-br from-orange-600 to-red-800',
-    icon: '⏰',
-  },
-  {
-    name: 'Cổ Trang',
-    color: 'bg-gradient-to-br from-rose-600 to-red-800',
-    icon: '👑',
-  },
-];
+
 export const allCommentsData: Comment[] = [
   {
     id: 1,
