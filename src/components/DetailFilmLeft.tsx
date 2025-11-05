@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieVideoDetail from './MovieVideoDetail';
+import MovieVideoDetail from './filmDetail/MovieVideoDetail';
 import { IDetailFilm } from '@/interface/ListFilm';
 interface Props {
   movie: IDetailFilm;

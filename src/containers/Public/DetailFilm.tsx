@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '@/components/Header';
+import Header from '@/components/header/Header';
 import DetailFilmLeft from '@/components/DetailFilmLeft';
 import RightBar from '@/components/SideBar';
-import Footer from '@/components/Footer';
+import Footer from '@/components/footer/Footer';
 import { IDetailFilm } from '@/interface/ListFilm';
 import { apiDetailFilm } from '@/apis/apiDetailFilm';
 import { useParams } from 'react-router-dom';
@@ -15,7 +15,7 @@ const DetailFilm: React.FC = () => {
   return (
     <div className="flex w-full bg-black flex-col justify-center items-center">
       <Header />
-      <div className="w-[90%]  flex justify-center">
+      <div className="w-[90%]  flex justify-center mt-16">
         <div className="w-[70%]">
           <DetailFilmLeft movie={movie} />
         </div>

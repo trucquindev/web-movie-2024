@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import { MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md';
 
 const Footer: React.FC = () => {
@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     });
   };
   return (
-    <div className="w-[94%] text-white border border-gray-700 p-4 mt-2">
+    <div className="w-full text-white border border-gray-700 p-4 mt-2">
       <div className=" bg-blue-500 p-4 grid grid-cols-2 border border-gray-400">
         <div>
           <p className="text-white">

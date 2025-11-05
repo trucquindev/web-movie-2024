@@ -7,14 +7,16 @@ import { apiComingSoon } from '@/apis/apiComingSoon';
 import { apiTopRate } from '@/apis/apiTopRate';
 import { useNavigate } from 'react-router-dom';
 import { path } from '../untils/constrains/path';
-const isActive =
-  'w-1/3 font-bold h-9 border flex items-center justify-center bg-gray-500';
-const notActive =
-  'w-1/3 font-bold h-9 border flex items-center justify-center bg-black';
+import { Star } from 'lucide-react';
+interface TopMovie {
+  rank: number;
+  title: string;
+  views: string;
+  rating: number;
+  image: string;
+}
+
 const RightBar: React.FC = () => {
-  const [activeDay, setActiveDay] = useState<boolean>(false);
-  const [activeWeek, setActiveWeek] = useState<boolean>(false);
-  const [activeMonth, setActiveMonth] = useState<boolean>(false);
   const [moviesTrending, setMoviesTrending] = useState<ITrending[]>([]);
   const [moviesComing, setMoviesComing] = useState<IComming[]>([]);
   const [moviesTopRate, setMoviesTopRate] = useState<ITopRate[]>([]);
@@ -22,80 +24,65 @@ const RightBar: React.FC = () => {
   apiTrending({ setMoviesTrending });
   apiComingSoon({ setMoviesComing });
   apiTopRate({ setMoviesTopRate });
-
+const topMovies: TopMovie[] = [
+  { rank: 1, title: 'Kẻ Dĩ Thuật', views: '24.9M', rating: 8.6, image: '🎬' },
+  { rank: 2, title: 'Sứ Mạng Kị Sĩ', views: '18.2M', rating: 8.9, image: '🎬' },
+  { rank: 3, title: 'Thập Nhị Sinh', views: '15.7M', rating: 8.4, image: '🎬' },
+  {
+    rank: 4,
+    title: 'Giải Cứu Hôn Lễ',
+    views: '12.3M',
+    rating: 8.2,
+    image: '🎬',
+  },
+  {
+    rank: 5,
+    title: 'Câu Lạc Bộ Sư Tử',
+    views: '11.8M',
+    rating: 8.7,
+    image: '🎬',
+  },
+];
   return (
     <div className="text-white w-full">
       {/* //Trending */}
-      <div className="px-4">
-        <h1 className="text-orange-500 text-2xl uppercase p-4 border-b border-dashed border-red-400">
-          Trending
-        </h1>
-        <nav className="w-full flex items-center justify-between mt-2 p-2">
-          <h1
-            onClick={() => {
-              setActiveDay(!activeDay);
-              if (activeMonth == true) {
-                setActiveMonth(false);
-              }
-              if (activeWeek == true) {
-                setActiveWeek(false);
-              }
-            }}
-            className={activeDay ? notActive : isActive}
-          >
-            Ngày
-          </h1>
-          <h1
-            onClick={() => {
-              setActiveWeek(!activeWeek);
-              if (activeDay == false) {
-                setActiveDay(true);
-              }
-              if (activeMonth == true) {
-                setActiveMonth(false);
-              }
-            }}
-            className={activeWeek ? isActive : notActive}
-          >
-            Tuần
-          </h1>
-          <h1
-            onClick={() => {
-              setActiveMonth(!activeMonth);
-              if (activeDay == false) {
-                setActiveDay(true);
-              }
-              if (activeWeek == true) {
-                setActiveWeek(false);
-              }
-            }}
-            className={activeMonth ? isActive : notActive}
-          >
-            Tháng
-          </h1>
-        </nav>
-        <div className="w-full flex flex-col items-center justify-center">
-          {moviesTrending &&
-            moviesTrending?.slice(0, 9)?.map((item, index) => {
-              return (
+      <div className="w-80">
+        <div className="bg-gray-900 rounded-lg p-4 sticky top-10 mt-6 rounded-xl">
+          <h3 className="font-semibold mb-4 flex items-center gap-2">
+            🔥 Top phim tuần này
+          </h3>
+          <div className="space-y-3">
+            {topMovies.map((movie) => (
+              <div
+                key={movie.rank}
+                className="flex items-center gap-3 group cursor-pointer"
+              >
                 <div
-                  key={index}
-                  className={`w-[90%] px-4 py-2 flex items-center gap-2 ${
-                    (index + 1) % 2 === 0 ? 'bg-gray-800' : ''
-                  } cursor-pointer`}
+                  className={`text-2xl font-bold ${
+                    movie.rank <= 3 ? 'text-orange-500' : 'text-gray-600'
+                  }`}
                 >
-                  <p className="w-6 h-6 bg-orange-400 rounded-full text-sm flex justify-center items-center">
-                    {index + 1}
-                  </p>
-                  <div className="flex flex-col text-sm">
-                    <h6 className="hover:text-orange-400">
-                      {item.original_title}
-                    </h6>
-                    <p className="text-xs"> {`${item.popularity} Views`}</p>
+                  {movie.rank}
+                </div>
+                <div className="w-12 h-16 bg-gray-800 rounded flex items-center justify-center text-2xl group-hover:scale-105 transition">
+                  {movie.image}
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-medium text-sm group-hover:text-orange-500 transition">
+                    {movie.title}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <span>{movie.views} lượt xem</span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-orange-500 text-orange-500" />
+                      {movie.rating}
+                    </span>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* sapchieu */}

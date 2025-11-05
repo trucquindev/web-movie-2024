@@ -3,7 +3,7 @@ import { FaRegCirclePlay } from 'react-icons/fa6';
 import { ITopRate } from '@/interface/ListFilm';
 import { apiTopRate } from '@/apis/apiTopRate';
 import { useNavigate } from 'react-router-dom';
-import { path } from '../untils/constrains/path';
+import { path } from '../../untils/constrains/path';
 const RecomendFilm: React.FC = () => {
   const navigate = useNavigate();
   const [moviesTopRate, setMoviesTopRate] = useState<ITopRate[]>([]);
