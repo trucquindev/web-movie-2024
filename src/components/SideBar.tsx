@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { ITrending } from '@/interface/ListFilm';
 import { IComming } from '@/interface/ListFilm';
 import { ITopRate } from '@/interface/ListFilm';
-import { apiTrending } from '@/apis/apiTrending';
 import { apiComingSoon } from '@/apis/apiComingSoon';
 import { apiTopRate } from '@/apis/apiTopRate';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +15,9 @@ interface TopMovie {
 }
 
 const RightBar: React.FC = () => {
-  const [moviesTrending, setMoviesTrending] = useState<ITrending[]>([]);
   const [moviesComing, setMoviesComing] = useState<IComming[]>([]);
   const [moviesTopRate, setMoviesTopRate] = useState<ITopRate[]>([]);
   const navigate = useNavigate();
-  apiTrending({ setMoviesTrending });
   apiComingSoon({ setMoviesComing });
   apiTopRate({ setMoviesTopRate });
 const topMovies: TopMovie[] = [
@@ -47,7 +43,7 @@ const topMovies: TopMovie[] = [
     <div className="text-white w-full">
       {/* //Trending */}
       <div className="w-80">
-        <div className="bg-gray-900 rounded-lg p-4 sticky top-10 mt-6 rounded-xl">
+        <div className="bg-gray-900 p-4 sticky top-10 mt-6 rounded-xl">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
             🔥 Top phim tuần này
           </h3>
