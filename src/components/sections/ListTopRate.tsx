@@ -3,10 +3,9 @@ import { ListFilm } from '@/interface/ListFilm';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
-import { path } from '../untils/constrains/path';
+import { path } from '@/untils/constrains/path';
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 7,
   },

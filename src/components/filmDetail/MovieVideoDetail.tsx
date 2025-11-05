@@ -1,8 +1,8 @@
 import React from 'react';
-import ic_facebook from '../assets/ic_facebook.png';
-import ic_instagram from '../assets/ic_instagram.png';
-import ic_twitter from '../assets/ic_twitter.png';
-import avt_luffy from '../assets/avt_luffy.png';
+import ic_facebook from '../../assets/ic_facebook.png';
+import ic_instagram from '../../assets/ic_instagram.png';
+import ic_twitter from '../../assets/ic_twitter.png';
+import avt_luffy from '../../assets/avt_luffy.png';
 import { IDetailFilm } from '@/interface/ListFilm';
 interface Props {
   movie: IDetailFilm;
@@ -57,7 +57,6 @@ const MovieVideoDetail: React.FC<Props> = ({ movie }) => {
             : movie?.overview}
         </p>
       </div>
-      {/* shar */}
       <div className="flex gap-2 items-center mb-4  ">
         <p className="text-sm text-gray-500 font-bold">Chia sẻ</p>
         <div className="flex gap-2 items-center">
