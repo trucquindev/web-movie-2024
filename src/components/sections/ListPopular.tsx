@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ListFilm } from '@/interface/ListFilm';
 import CategoryMovieSection from './CategoryMovieSection';
-import { Loader2, AlertCircle, RefreshCw } from 'lucide-react';
+import { AlertCircle, RefreshCw } from 'lucide-react';
 
 interface Props {
   setId?: React.Dispatch<React.SetStateAction<number | undefined>>;
@@ -119,7 +119,9 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
       return (
         <div className="space-y-4 sm:space-y-6">
           <div className="px-2 sm:px-4">
-            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor}`}>
+            <h2
+              className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor}`}
+            >
               {title}
             </h2>
           </div>
@@ -144,7 +146,9 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
       return (
         <div className="space-y-4 sm:space-y-6">
           <div className="px-2 sm:px-4">
-            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor}`}>
+            <h2
+              className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor}`}
+            >
               {title}
             </h2>
           </div>

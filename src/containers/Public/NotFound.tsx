@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Home, Search, ArrowLeft, Film } from 'lucide-react';
 import Header from '@/components/header/Header';
@@ -56,10 +56,12 @@ const NotFound: React.FC = () => {
               Trang không tồn tại
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-2">
-              Xin lỗi! Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.
+              Xin lỗi! Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di
+              chuyển.
             </p>
             <p className="text-base sm:text-lg text-slate-400">
-              Nhưng đừng lo lắng, bạn có thể quay lại trang chủ để tiếp tục xem phim!
+              Nhưng đừng lo lắng, bạn có thể quay lại trang chủ để tiếp tục xem
+              phim!
             </p>
           </motion.div>
 
