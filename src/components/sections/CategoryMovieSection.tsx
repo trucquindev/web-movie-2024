@@ -66,16 +66,24 @@ const CategoryMovieSection: React.FC<CategoryMovieSectionProps> = ({
         </button>
 
         {/* Movies Grid */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 pb-4 scroll-smooth"
-        >
-          {movies.map((movie, index) => (
-            <div key={`${movie.id}-${index}`} className="flex-shrink-0">
-              <MovieCard movie={movie} setId={setId} />
+        {movies.length === 0 ? (
+          <div className="px-2 sm:px-4 py-8">
+            <div className="bg-slate-700/30 border border-slate-600/30 rounded-xl p-8 text-center">
+              <p className="text-slate-400">Không có phim nào để hiển thị.</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 pb-4 scroll-smooth"
+          >
+            {movies.map((movie, index) => (
+              <div key={`${movie.id}-${index}`} className="flex-shrink-0">
+                <MovieCard movie={movie} setId={setId} />
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Right Scroll Button */}
         <button

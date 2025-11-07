@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ListFilm } from '@/interface/ListFilm';
 import { useNavigate } from 'react-router-dom';
 import { path } from '../../untils/constrains/path';
@@ -27,18 +27,61 @@ const MovieCard: React.FC<MovieCardProps> = ({
     });
   };
 
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const imageUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : null;
+
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoading(false);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
   return (
     <div
       onClick={handleClick}
       className="w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] h-52 sm:h-60 md:h-64 lg:h-72 relative transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer group"
     >
       {/* Image */}
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title || movie.original_title}
-        className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-      />
-      
+      {imageLoading && !imageError && (
+        <div className="absolute inset-0 bg-slate-700/50 rounded-xl sm:rounded-2xl animate-pulse" />
+      )}
+      {imageError || !imageUrl ? (
+        <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center p-4">
+          <svg
+            className="w-12 h-12 sm:w-16 sm:h-16 text-slate-500 mb-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 4v16M17 4v16M3 8h18M3 12h18M3 16h18M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
+            />
+          </svg>
+          <p className="text-slate-400 text-xs text-center line-clamp-2">
+            {movie.title || movie.original_title}
+          </p>
+        </div>
+      ) : (
+        <img
+          src={imageUrl}
+          alt={movie.title || movie.original_title}
+          className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+          onError={handleImageError}
+          onLoad={handleImageLoad}
+          loading="lazy"
+        />
+      )}
+
       {/* Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/30 group-hover:bg-black/0 transition-opacity rounded-xl sm:rounded-2xl" />
       
