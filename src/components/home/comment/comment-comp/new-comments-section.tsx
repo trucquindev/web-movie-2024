@@ -74,19 +74,19 @@ export default function NewCommentsSection() {
   }, [availableComments.length]);
 
   return (
-    <section className="lg:col-span-2">
-      <h2 className="flex items-center gap-2 text-lg font-bold mb-6">
-        <Zap className="w-5 h-5 text-yellow-400" />
+    <section className="md:col-span-2 lg:col-span-2">
+      <h2 className="flex items-center gap-2 text-base sm:text-lg font-bold mb-4 sm:mb-6">
+        <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
         BÌNH LUẬN MỚI
       </h2>
-      <div className="space-y-4 px-8 relative">
+      <div className="space-y-3 sm:space-y-4 px-2 sm:px-4 md:px-8 relative">
         {displayedComments.map((comment) => {
           const isNew = animatingIds.has(comment.id);
           return (
             <div
               key={comment.id}
               className={`
-                flex gap-4 p-4 bg-[#1f2937] rounded-2xl hover:bg-[#2d3748] 
+                flex gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 bg-[#1f2937] rounded-xl sm:rounded-2xl hover:bg-[#2d3748] 
                 transition-all duration-500 ease-in-out cursor-pointer group
                 ${isNew ? 'animate-slide-in' : ''}
               `}
@@ -99,23 +99,23 @@ export default function NewCommentsSection() {
               <img
                 src={comment.avatar || '/placeholder.svg'}
                 alt={comment.name}
-                className="w-10 h-10 rounded-full object-cover flex-shrink-0 border border-[#2d3748]"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover flex-shrink-0 border border-[#2d3748]"
               />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="font-semibold text-sm group-hover:text-[#ff6b9d] transition">
-                    {comment.name}
+                  <p className="font-semibold text-xs sm:text-sm group-hover:text-[#ff6b9d] transition truncate">
+                  {comment.name}
                   </p>
                 </div>
-                <p className="text-sm text-[#9ca3af] line-clamp-2">
+                <p className="text-xs sm:text-sm text-[#9ca3af] line-clamp-2">
                   {comment.text}
                 </p>
-                <div className="flex items-center gap-2 mt-2 text-xs text-[#6b7280]">
+                <div className="flex items-center gap-2 mt-1 sm:mt-2 text-xs text-[#6b7280]">
                   <Play className="w-3 h-3" />
                   <span className="truncate">{comment.replies}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#6b7280] flex-shrink-0">
+              <div className="flex items-center gap-1 sm:gap-2 text-xs text-[#6b7280] flex-shrink-0">
                 <span>{comment.views}</span>
                 <Heart className="w-3 h-3" />
                 <span>{comment.likes}</span>

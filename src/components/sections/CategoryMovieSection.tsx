@@ -1,28 +1,9 @@
-import React from 'react';
-import { ListFilm } from '@/interface/ListFilm';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import MovieCard from './MovieCard';
-import { ChevronRight } from 'lucide-react';
+'use client';
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 7,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1200 },
-    items: 6,
-  },
-  tablet: {
-    breakpoint: { max: 1200, min: 600 },
-    items: 3,
-  },
-  mobile: {
-    breakpoint: { max: 600, min: 0 },
-    items: 2,
-  },
-};
+import React, { useRef } from 'react';
+import { ListFilm } from '@/interface/ListFilm';
+import MovieCard from './MovieCard';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface CategoryMovieSectionProps {
   title: string;
@@ -39,45 +20,77 @@ const CategoryMovieSection: React.FC<CategoryMovieSectionProps> = ({
   setId,
   viewAllLink,
 }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
-    <div className="w-full mb-8 px-6 md:px-10">
-      {/* Title and View All Link */}
-      <div className="flex flex-col mb-4">
-        <h2 className={`text-3xl md:text-4xl font-bold ${titleColor} mb-2`}>
-          {title}
-        </h2>
-        {viewAllLink && (
-          <a
-            href={viewAllLink}
-            className="text-white text-sm hover:text-gray-300 transition-colors flex items-center gap-1 w-fit"
+    <section className="space-y-4 sm:space-y-6">
+      {/* Header */}
+      <div className="px-2 sm:px-4">
+        <div className="flex items-end justify-between gap-3 mb-1 sm:mb-2">
+          <h2
+            className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${titleColor}`}
           >
-            Xem toàn bộ
-            <ChevronRight className="w-4 h-4" />
-          </a>
-        )}
+            {title}
+          </h2>
+          {viewAllLink && (
+            <a
+              href={viewAllLink}
+              className="text-white/70 hover:text-white text-xs sm:text-sm transition-colors flex items-center gap-1 whitespace-nowrap group"
+            >
+              <span>Xem toàn bộ</span>
+              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          )}
+        </div>
       </div>
 
-      {/* Carousel */}
-      <div className="relative">
-        <Carousel
-          responsive={responsive}
-          className="flex items-center w-full"
-          arrows={true}
-          swipeable={true}
-          draggable={true}
-          showDots={false}
-          infinite={true}
-          autoPlay={false}
-          keyBoardControl={true}
+      {/* Carousel Container */}
+      <div className="relative group">
+        {/* Left Scroll Button */}
+        <button
+          onClick={() => scroll('left')}
+          className="hidden sm:block absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 backdrop-blur-sm rounded-full p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+        </button>
+
+        {/* Movies Grid */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 pb-4 scroll-smooth"
         >
           {movies.map((movie, index) => (
-            <div key={`${movie.id}-${index}`} className="px-2">
+            <div key={`${movie.id}-${index}`} className="flex-shrink-0">
               <MovieCard movie={movie} setId={setId} />
             </div>
           ))}
-        </Carousel>
+        </div>
+
+        {/* Right Scroll Button */}
+        <button
+          onClick={() => scroll('right')}
+          className="hidden sm:block absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 backdrop-blur-sm rounded-full p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+        </button>
+
+        {/* Gradient overlays */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
       </div>
-    </div>
+    </section>
   );
 };
 

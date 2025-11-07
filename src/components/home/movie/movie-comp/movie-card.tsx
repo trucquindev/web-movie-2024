@@ -28,7 +28,7 @@ export default function MovieCard({
     <div
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
-      className="w-48 md:w-52 cursor-pointer transition-all duration-300"
+      className="w-36 sm:w-40 md:w-48 lg:w-52 cursor-pointer transition-all duration-300"
     >
       <div
         className={`relative overflow-hidden rounded-xl aspect-[2/3] bg-slate-800 mb-3 shadow-lg transition-all duration-300 ${

@@ -84,8 +84,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 w-screen">
-     
-        <Header />
+      <Header />
 
       <main>
         {/* Featured Movie with overlay selector */}
@@ -93,8 +92,7 @@ export default function Home() {
           <FeaturedMovie movie={selectedMovie} />
 
           {/* Overlay selector */}
-
-          <div className="absolute right-16 bottom-1/3">
+          <div className="absolute right-4 md:right-8 lg:right-16 bottom-1/4 md:bottom-1/3 z-10">
             <MovieSelector
               movies={MOVIES}
               selectedMovie={selectedMovie}

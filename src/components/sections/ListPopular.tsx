@@ -54,22 +54,24 @@ const PopularFilm: React.FC<Props> = ({ setId }) => {
   }, []);
 
   return (
-    <div className="w-full bg-[#282b3a] py-10 mt-24">
-      <CategoryMovieSection
-        title="Phim Phổ Biến"
-        titleColor="text-purple-400"
-        movies={popularMovies}
-        setId={setId}
-        viewAllLink="/popular"
-      />
+    <div className="w-full bg-[#282b3a] pt-10 sm:pt-12 md:pt-12 lg:pt-20 pb-8 sm:pb-10 md:pb-12">
+      <div className="space-y-8 sm:space-y-10 md:space-y-12">
+        <CategoryMovieSection
+          title="Phim Phổ Biến"
+          titleColor="text-purple-400"
+          movies={popularMovies}
+          setId={setId}
+          viewAllLink="/popular"
+        />
 
-      <CategoryMovieSection
-        title="Phim Đánh Giá Cao"
-        titleColor="text-yellow-400"
-        movies={topRatedMovies}
-        setId={setId}
-        viewAllLink="/top-rated"
-      />
+        <CategoryMovieSection
+          title="Phim Đánh Giá Cao"
+          titleColor="text-yellow-400"
+          movies={topRatedMovies}
+          setId={setId}
+          viewAllLink="/top-rated"
+        />
+      </div>
     </div>
   );
 };

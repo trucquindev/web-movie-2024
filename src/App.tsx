@@ -11,7 +11,7 @@ function App() {
   const { showAuthModal, setShowAuthModal } = useAuth();
 
   return (
-    <div className="w-full overflow-x-hidden flex flex-col items-center justify-center">
+    <div className="w-full overflow-x-hidden flex flex-col items-center justify-center min-h-screen">
       {/* Routes */}
       <Routes>
         <Route path={path.HOME} element={<Home />} />
