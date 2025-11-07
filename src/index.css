@@ -23,3 +23,43 @@
 .blink-border {
   animation: blink-border 1s infinite;
 }
+
+/* Carousel arrows styling */
+.carousel-container .react-multi-carousel-list {
+  padding: 0;
+}
+
+.carousel-container .react-multi-carousel-arrow {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px);
+  border: none !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+  z-index: 10;
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 640px) {
+  .carousel-container .react-multi-carousel-arrow {
+    display: none !important;
+  }
+}
+
+/* Show arrows on hover for tablet and desktop */
+@media (min-width: 641px) {
+  .carousel-container:hover .react-multi-carousel-arrow {
+    opacity: 1;
+  }
+}
+
+.carousel-container .react-multi-carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.carousel-container .react-multi-carousel-arrow::before {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}

@@ -20,58 +20,70 @@ const RightBar: React.FC = () => {
   const navigate = useNavigate();
   apiComingSoon({ setMoviesComing });
   apiTopRate({ setMoviesTopRate });
-const topMovies: TopMovie[] = [
-  { rank: 1, title: 'Kẻ Dĩ Thuật', views: '24.9M', rating: 8.6, image: '🎬' },
-  { rank: 2, title: 'Sứ Mạng Kị Sĩ', views: '18.2M', rating: 8.9, image: '🎬' },
-  { rank: 3, title: 'Thập Nhị Sinh', views: '15.7M', rating: 8.4, image: '🎬' },
-  {
-    rank: 4,
-    title: 'Giải Cứu Hôn Lễ',
-    views: '12.3M',
-    rating: 8.2,
-    image: '🎬',
-  },
-  {
-    rank: 5,
-    title: 'Câu Lạc Bộ Sư Tử',
-    views: '11.8M',
-    rating: 8.7,
-    image: '🎬',
-  },
-];
+  const topMovies: TopMovie[] = [
+    { rank: 1, title: 'Kẻ Dĩ Thuật', views: '24.9M', rating: 8.6, image: '🎬' },
+    {
+      rank: 2,
+      title: 'Sứ Mạng Kị Sĩ',
+      views: '18.2M',
+      rating: 8.9,
+      image: '🎬',
+    },
+    {
+      rank: 3,
+      title: 'Thập Nhị Sinh',
+      views: '15.7M',
+      rating: 8.4,
+      image: '🎬',
+    },
+    {
+      rank: 4,
+      title: 'Giải Cứu Hôn Lễ',
+      views: '12.3M',
+      rating: 8.2,
+      image: '🎬',
+    },
+    {
+      rank: 5,
+      title: 'Câu Lạc Bộ Sư Tử',
+      views: '11.8M',
+      rating: 8.7,
+      image: '🎬',
+    },
+  ];
   return (
     <div className="text-white w-full">
       {/* //Trending */}
-      <div className="w-80">
-        <div className="bg-gray-900 p-4 sticky top-10 mt-6 rounded-xl">
-          <h3 className="font-semibold mb-4 flex items-center gap-2">
+      <div className="w-full lg:w-80">
+        <div className="bg-gray-900 p-3 sm:p-4 sticky top-10 mt-4 sm:mt-6 rounded-xl">
+          <h3 className="font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
             🔥 Top phim tuần này
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {topMovies.map((movie) => (
               <div
                 key={movie.rank}
-                className="flex items-center gap-3 group cursor-pointer"
+                className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
               >
                 <div
-                  className={`text-2xl font-bold ${
+                  className={`text-xl sm:text-2xl font-bold ${
                     movie.rank <= 3 ? 'text-orange-500' : 'text-gray-600'
                   }`}
                 >
                   {movie.rank}
                 </div>
-                <div className="w-12 h-16 bg-gray-800 rounded flex items-center justify-center text-2xl group-hover:scale-105 transition">
+                <div className="w-10 h-14 sm:w-12 sm:h-16 bg-gray-800 rounded flex items-center justify-center text-xl sm:text-2xl group-hover:scale-105 transition">
                   {movie.image}
                 </div>
-                <div className="flex-1">
-                  <h4 className="font-medium text-sm group-hover:text-orange-500 transition">
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-medium text-xs sm:text-sm group-hover:text-orange-500 transition truncate">
                     {movie.title}
                   </h4>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <span>{movie.views} lượt xem</span>
+                  <div className="flex items-center gap-1 sm:gap-2 text-xs text-gray-500">
+                    <span className="truncate">{movie.views} lượt xem</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-orange-500 text-orange-500" />
+                      <Star className="w-3 h-3 fill-orange-500 text-orange-500 flex-shrink-0" />
                       {movie.rating}
                     </span>
                   </div>
@@ -82,8 +94,8 @@ const topMovies: TopMovie[] = [
         </div>
       </div>
       {/* sapchieu */}
-      <div className="px-4">
-        <h1 className="text-orange-500 text-2xl uppercase p-4 border-b border-dashed border-red-400">
+      <div className="px-2 sm:px-4 mt-4 sm:mt-6">
+        <h1 className="text-orange-500 text-lg sm:text-xl md:text-2xl uppercase p-2 sm:p-4 border-b border-dashed border-red-400">
           Sắp Chiếu
         </h1>
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
@@ -92,17 +104,19 @@ const topMovies: TopMovie[] = [
               return (
                 <div
                   key={index}
-                  className="w-full p-2 flex gap-3 cursor-pointer hover:text-orange-400"
+                  className="w-full p-2 flex gap-2 sm:gap-3 cursor-pointer hover:text-orange-400"
                 >
                   <img
                     src={`${'https://image.tmdb.org/t/p/w500'}${
                       movie.poster_path
                     }`}
                     alt="poster"
-                    className="w-20 h-24 object-cover"
+                    className="w-16 h-20 sm:w-20 sm:h-24 object-cover flex-shrink-0"
                   />
-                  <div className="w-full text-sm mt-2 flex flex-col justify-center gap-5 py-2">
-                    <h6 className="text-sm">{movie.title}</h6>
+                  <div className="w-full text-xs sm:text-sm mt-2 flex flex-col justify-center gap-2 sm:gap-5 py-2 min-w-0">
+                    <h6 className="text-xs sm:text-sm truncate">
+                      {movie.title}
+                    </h6>
                     <p className="text-xs">Sắp chiếu vietsub</p>
                   </div>
                 </div>
@@ -112,8 +126,8 @@ const topMovies: TopMovie[] = [
       </div>
 
       {/*  bangxephang */}
-      <div className="px-4">
-        <h1 className="text-orange-500 text-2xl uppercase p-4 border-b border-dashed border-red-400">
+      <div className="px-2 sm:px-4 mt-4 sm:mt-6">
+        <h1 className="text-orange-500 text-lg sm:text-xl md:text-2xl uppercase p-2 sm:p-4 border-b border-dashed border-red-400">
           bảng xếp hạng
         </h1>
         <div className="w-full flex flex-wrap items-center justify-between gap-2">
@@ -136,10 +150,12 @@ const topMovies: TopMovie[] = [
                       movie.poster_path
                     }`}
                     alt="poster"
-                    className="w-20 h-24 object-cover"
+                    className="w-16 h-20 sm:w-20 sm:h-24 object-cover flex-shrink-0"
                   />
-                  <div className="w-full text-sm mt-2 flex flex-col justify-center gap-5 py-2">
-                    <h6 className="text-sm">{movie?.title}</h6>
+                  <div className="w-full text-xs sm:text-sm mt-2 flex flex-col justify-center gap-2 sm:gap-5 py-2 min-w-0">
+                    <h6 className="text-xs sm:text-sm truncate">
+                      {movie?.title}
+                    </h6>
                     <p className="text-xs">{movie?.release_date}</p>
                   </div>
                 </div>

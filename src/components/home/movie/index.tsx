@@ -70,7 +70,7 @@ const carouselData = carouselDataFake
     <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <div
         ref={containerRef}
-        className="space-y-12 px-6 py-8 mx-auto"
+        className="space-y-8 sm:space-y-10 md:space-y-12 px-4 sm:px-6 py-6 sm:py-8 mx-auto"
       >
         {visibleCarousels.map((data, index) => (
           <MovieCarousel

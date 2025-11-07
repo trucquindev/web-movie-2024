@@ -9,96 +9,98 @@ interface Props {
 }
 const MovieVideoDetail: React.FC<Props> = ({ movie }) => {
   return (
-    <div>
+    <div className="px-2 sm:px-4 md:px-0">
       {/* title  */}
-      <h1 className="text-white font-semibold text-2xl py-2">{movie?.title}</h1>
+      <h1 className="text-white font-semibold text-lg sm:text-xl md:text-2xl py-2">
+        {movie?.title}
+      </h1>
       {/* video film  */}
-      <div className="w-[100%]">
-        {/* https://drive.google.com/file/d/1-48goMr8BMir0ZaE9Y996xq2R68018Vt/view?usp=sharing
-        <video
-          controls
-          className="w-full h-[400px] object-cover p-2"
-          src="https://drive.google.com/uc?export=download&id=1-48goMr8BMir0ZaE9Y996xq2R68018Vt"
-        ></video> */}
+      <div className="w-full">
         <iframe
           src="https://drive.google.com/file/d/1-48goMr8BMir0ZaE9Y996xq2R68018Vt/preview"
-          className="w-full h-[400px] object-cover p-2"
+          className="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover p-1 sm:p-2"
           allow="autoplay"
         />
-        <div className="flex flex-col justify-center items-center py-2 border-b border-gray-400">
-          <h3 className="text-white font-semibold text-lg mb-2">
+        <div className="flex flex-col justify-center items-center py-2 border-b border-gray-400 px-2">
+          <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg mb-2">
             Đổi server nếu lag
           </h3>
-          <div className="flex gap-4">
-            <h4 className="text-sm text-white border rounded-xl px-2 py-2 bg-slate-900 ">
+          <div className="flex gap-2 sm:gap-3 md:gap-4 flex-wrap justify-center">
+            <h4 className="text-xs sm:text-sm text-white border rounded-lg sm:rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-900 cursor-pointer hover:bg-slate-800 transition">
               Server 1
             </h4>
-            <h4 className="text-sm text-white border rounded-xl px-2 py-2 bg-slate-700">
+            <h4 className="text-xs sm:text-sm text-white border rounded-lg sm:rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 cursor-pointer hover:bg-slate-600 transition">
               Server 2
             </h4>
-            <h4 className="text-sm text-white border rounded-xl px-2 py-2 bg-slate-700">
+            <h4 className="text-xs sm:text-sm text-white border rounded-lg sm:rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 cursor-pointer hover:bg-slate-600 transition">
               Server 3
             </h4>
           </div>
         </div>
       </div>
       {/* description */}
-      <div>
-        <h2 className="uppercase text-white font-semibold text-xl py-2">
+      <div className="px-2 sm:px-0">
+        <h2 className="uppercase text-white font-semibold text-lg sm:text-xl py-2">
           {movie?.title}
         </h2>
-        <h6 className="text-white text-lg">{movie?.tagline}</h6>
-        <p className="">Tập Full</p>
+        <h6 className="text-white text-sm sm:text-base md:text-lg">
+          {movie?.tagline}
+        </h6>
+        <p className="text-sm sm:text-base">Tập Full</p>
       </div>
-      <div className="p-3 bg-slate-800 flex justify-center items-center mb-4">
-        <p className="text-white">
+      <div className="p-3 sm:p-4 bg-slate-800 flex justify-center items-center mb-4 rounded-lg">
+        <p className="text-white text-sm sm:text-base">
           {movie?.overview?.length > 400
             ? `${movie?.overview?.slice(0, 400)}...`
             : movie?.overview}
         </p>
       </div>
-      <div className="flex gap-2 items-center mb-4  ">
-        <p className="text-sm text-gray-500 font-bold">Chia sẻ</p>
+      <div className="flex gap-2 items-center mb-4 px-2 sm:px-0">
+        <p className="text-xs sm:text-sm text-gray-500 font-bold">Chia sẻ</p>
         <div className="flex gap-2 items-center">
           <img
             src={ic_facebook}
             alt=""
-            className="w-6 h-6 bg-white rounded-full"
+            className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full cursor-pointer hover:opacity-80 transition"
           />
           <img
             src={ic_instagram}
             alt=""
-            className="w-6 h-6 bg-white rounded-full"
+            className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full cursor-pointer hover:opacity-80 transition"
           />
           <img
             src={ic_twitter}
             alt=""
-            className="w-6 h-6 bg-white rounded-full"
+            className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full cursor-pointer hover:opacity-80 transition"
           />
         </div>
       </div>
       {/* bình luận */}
-      <div className="border border-gray-600 p-4 bg-slate-900">
-        <div className="border-b border-gray-400">
-          <h6 className="text-white text-lg">Bình luận</h6>
-          <p className="text-white">
+      <div className="border border-gray-600 p-3 sm:p-4 bg-slate-900 rounded-lg">
+        <div className="border-b border-gray-400 pb-2 sm:pb-3">
+          <h6 className="text-white text-base sm:text-lg">Bình luận</h6>
+          <p className="text-white text-xs sm:text-sm">
             Vui lòng <span className="text-orange-500">đăng nhập</span> để đăng
             bình luận
           </p>
         </div>
-        <div className="mt-2 p-4 bg-gray-800 flex gap-3 flex-col">
-          <div className="flex gap-6 items-center">
+        <div className="mt-2 p-3 sm:p-4 bg-gray-800 flex gap-3 flex-col rounded-lg">
+          <div className="flex gap-3 sm:gap-6 items-center flex-wrap">
             <div className="flex items-center gap-2">
               <img
                 src={avt_luffy}
                 alt="avatar"
-                className="w-8 h-8 rounded-full"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full"
               />
-              <p className="text-white font-semibold">Quỳnh Nguyễn</p>
+              <p className="text-white font-semibold text-sm sm:text-base">
+                Quỳnh Nguyễn
+              </p>
             </div>
-            <p className="text-gray-400 text-sm">Một tháng trước</p>
+            <p className="text-gray-400 text-xs sm:text-sm">Một tháng trước</p>
           </div>
-          <p className="text-white">Phim hay lắm các bạn ơi!</p>
+          <p className="text-white text-sm sm:text-base">
+            Phim hay lắm các bạn ơi!
+          </p>
         </div>
       </div>
     </div>

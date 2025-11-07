@@ -15,12 +15,12 @@ const DetailFilm: React.FC = () => {
   return (
     <div className="flex w-full bg-black flex-col justify-center items-center">
       <Header />
-      <div className="w-[90%]  flex justify-center mt-16">
-        <div className="w-[70%]">
+      <div className="w-full sm:w-[95%] md:w-[90%] flex flex-col lg:flex-row justify-center mt-16 sm:mt-20 px-4 sm:px-6 md:px-0 gap-6 lg:gap-8">
+        <div className="w-full lg:w-[70%]">
           <DetailFilmLeft movie={movie} />
         </div>
         {/* Detail film */}
-        <div className="w-[30%]">
+        <div className="w-full lg:w-[30%]">
           <RightBar />
         </div>
       </div>
