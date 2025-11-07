@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  ChevronLeft,
-  ChevronRight,
-  TrendingUp,
-  Heart,
-  Flame,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flame } from 'lucide-react';
 import { useRef } from 'react';
 import TopCommentCard from './comment-comp/top-comment-card';
 import TrendingSection from './comment-comp/trending-section';
@@ -76,7 +70,7 @@ const CommentAnalysis = () => {
             <TrendingSection />
 
             {/* Most Liked */}
-            <MostLikeSections/>
+            <MostLikeSections />
 
             {/* New Comments Section */}
             <NewCommentsSection />
