@@ -31,7 +31,9 @@ export default function Header() {
           onClick={() => nagivate('/')}
         >
           <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-amber-400 flex items-center justify-center">
-            <span className="text-slate-950 font-bold text-sm md:text-lg">▶</span>
+            <span className="text-slate-950 font-bold text-sm md:text-lg">
+              ▶
+            </span>
           </div>
           <div className="hidden sm:block">
             <h1 className="text-white font-bold text-base md:text-lg leading-none">
@@ -43,48 +45,61 @@ export default function Header() {
 
         {/* Search Bar - Hidden on mobile */}
         <div className="hidden md:flex flex-1 max-w-md mx-4">
-          <SearchBar/>
+          <SearchBar />
         </div>
 
         {/* Navigation - Desktop */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm">
+        <nav
+          className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm"
+          role="navigation"
+          aria-label="Main navigation"
+        >
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Phim Lẻ"
           >
             Phim Lẻ
           </a>
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Phim Bộ"
           >
             Phim Bộ
           </a>
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Thể loại"
           >
             Thể loại
           </a>
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Quốc gia"
           >
             Quốc gia
           </a>
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Xem Chung"
           >
             Xem Chung
           </a>
           <a
             href="#"
-            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            className="text-slate-300 hover:text-white transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 rounded px-1"
+            aria-label="Thêm"
           >
             Thêm
           </a>
-          <span className="bg-amber-400 text-slate-950 px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
+          <span
+            className="bg-amber-400 text-slate-950 px-2 py-1 rounded text-xs font-bold whitespace-nowrap"
+            aria-label="Rô Bóng - Tính năng đặc biệt"
+          >
             Rô Bóng
           </span>
         </nav>
@@ -102,84 +117,100 @@ export default function Header() {
           >
             Thành viên
           </button>
-          
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 text-white hover:text-amber-400 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-800/50 bg-black/95 backdrop-blur">
-          {/* Mobile Search */}
-          <div className="px-4 py-3 border-b border-slate-800/50">
-            <SearchBar/>
-          </div>
-          
-          {/* Mobile Navigation */}
-          <nav className="px-4 py-4 space-y-3">
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Phim Lẻ
-            </a>
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Phim Bộ
-            </a>
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Thể loại
-            </a>
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Quốc gia
-            </a>
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Xem Chung
-            </a>
-            <a
-              href="#"
-              className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Thêm
-            </a>
-            <div className="pt-2 border-t border-slate-800/50">
-              <button
-                className="w-full px-4 py-2 bg-slate-100 text-slate-950 rounded-full font-medium text-sm hover:bg-slate-200 transition-colors"
-                onClick={() => {
-                  setShowAuthModal(true);
-                  setMobileMenuOpen(false);
-                }}
-              >
-                Thành viên
-              </button>
-            </div>
-          </nav>
+      <div
+        className={`md:hidden border-t border-slate-800/50 bg-black/95 backdrop-blur overflow-hidden transition-all duration-1000 ease-in-out ${
+          mobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {/* Mobile Search */}
+        <div className="px-4 py-3 border-b border-slate-800/50">
+          <SearchBar />
         </div>
-      )}
+
+        {/* Mobile Navigation */}
+        <nav
+          className="px-4 py-4 space-y-3"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Phim Lẻ"
+          >
+            Phim Lẻ
+          </a>
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Phim Bộ"
+          >
+            Phim Bộ
+          </a>
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Thể loại"
+          >
+            Thể loại
+          </a>
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Quốc gia"
+          >
+            Quốc gia
+          </a>
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Xem Chung"
+          >
+            Xem Chung
+          </a>
+          <a
+            href="#"
+            className="block text-slate-300 hover:text-white transition-colors cursor-pointer py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-inset rounded px-2"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Thêm"
+          >
+            Thêm
+          </a>
+          <div className="pt-2 border-t border-slate-800/50">
+            <button
+              className="w-full px-4 py-2 bg-slate-100 text-slate-950 rounded-full font-medium text-sm hover:bg-slate-200 transition-colors"
+              onClick={() => {
+                setShowAuthModal(true);
+                setMobileMenuOpen(false);
+              }}
+            >
+              Thành viên
+            </button>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
